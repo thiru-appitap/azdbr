@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./azdbr",
+        "./azdbr/core",
+        "./azdbr/identity"
+    ]
+}
