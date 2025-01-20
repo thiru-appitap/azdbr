@@ -1,6 +1,6 @@
 import os
 
-from azdbr.identity import (
+from identity import (
     AzCredential,
     IdentityBuilder,
     MissingInfoError,
@@ -8,7 +8,6 @@ from azdbr.identity import (
     AuthType,
     UnsupportedAuthError,
 )
-
 
 from dotenv import load_dotenv
 
@@ -31,9 +30,9 @@ def build_spn_creds():
             .with_client_secret(secret=client_secret)
             .build()
         )
-        spn_credential.info(f"credential: {type(spn_credential.credential)}")
+        print(f"type: ", spn_credential.type)
 
-        token = spn_credential.get_token("[Mail.Send]")
+        token = spn_credential.get_token(str(".default"))
         print(f"token: {token}")
     except AuthenticationError as ae:
         print(f"AE: {ae}, {type(ae)}")
@@ -54,10 +53,9 @@ def build_user_creds():
             .with_auth_type(authType=AuthType.AZ_USER_CREDS)
             .build()
         )
-        print(f"credential: {type(user_credential)}")
         print(f"auth type: {user_credential.type}")
 
-        token = user_credential.get_token("[Mail.Send]")
+        token = user_credential.get_token("[].default]")
         print(f"token: {token}")
     except MissingInfoError as mie:
         builder.error(f"mie: {mie}")

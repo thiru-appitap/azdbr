@@ -17,7 +17,7 @@ class AzIdentityInfoStore(BaseModel):
 
     authority: Optional[str] = "login.microsoftonline.com"
 
-    scope: Optional[List[str]] = ["Mail.Send"]
+    scope: Optional[str] = ".default"
 
     sas_key: Optional[str] = None
     account_name: Optional[str] = None

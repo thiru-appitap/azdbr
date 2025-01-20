@@ -55,7 +55,7 @@ def build_user_creds():
         )
         print(f"auth type: {user_credential.type}")
 
-        token = user_credential.get_token(".default")
+        token = user_credential.get_token("[].default]")
         print(f"token: {token}")
     except MissingInfoError as mie:
         builder.error(f"mie: {mie}")
